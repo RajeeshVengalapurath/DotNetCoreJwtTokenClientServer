@@ -14,6 +14,8 @@ namespace Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication();
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
