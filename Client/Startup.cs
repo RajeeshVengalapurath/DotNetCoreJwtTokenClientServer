@@ -35,7 +35,8 @@ namespace Client
                     config.TokenEndpoint = "https://localhost:44304/oauth/token";
                 });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
