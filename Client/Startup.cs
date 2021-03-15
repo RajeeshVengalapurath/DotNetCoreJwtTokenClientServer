@@ -14,7 +14,22 @@ namespace Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication();
+            services.AddAuthentication(config =>
+            {
+                /*Check cookie to verify authenticated*/
+                config.DefaultAuthenticateScheme = "MyClientCookie";
+
+                /*Generate cookie on sign in*/
+                config.DefaultSignInScheme = "MyClientCookie";
+
+                /*Authentication server*/
+                config.DefaultChallengeScheme = "MyServer";
+            })
+                .AddCookie("MyClientCookie")
+                .AddOAuth("MyServer", config =>
+                {
+                });
+
             services.AddControllersWithViews();
         }
 
